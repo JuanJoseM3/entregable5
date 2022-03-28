@@ -64,3 +64,18 @@
     height: 24px;
 }
 
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 20px auto;
+    width: 400px;
+}
+
+.page-button {
+    background-color: #753838;
+    border: none;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px
+}

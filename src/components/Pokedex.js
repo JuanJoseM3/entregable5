@@ -82,6 +82,16 @@ const Pokedex = () => {
                     <button><img src={pokeball} className='pokeball-image'/></button>
                 </form>
             </div>
+            <div className='button-container'>
+                {   
+                    currentPage > 1 && 
+                    <button className='page-button' onClick={previousPage}>Previous</button> 
+                }
+                { 
+                    currentPage < numberOfPages && 
+                    <button className='page-button' onClick={nextPage}>Next</button> 
+                }             
+            </div>
             <ul className='pokemon-list'>
                 {
                     pokemonsPageResults().map(pokemon => (
