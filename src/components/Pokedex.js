@@ -20,6 +20,11 @@ const Pokedex = () => {
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ currentList, setCurrentList ] = useState(0);
 
+    const pagesNumber = [];
+    for( let i = 1; i <= numberOfPages; i++) {
+        pagesNumber.push(i);
+    }
+
     const nextPage = () => {
         if( currentPage <= numberOfPages )
             setCurrentList(currentList + 15);
@@ -55,8 +60,6 @@ const Pokedex = () => {
             .then(res => setPokemons(res.data.pokemon))
     }
 
-    console.log(pokemons)
-
     return (
         <div>
             <img src={pokemon} className='pokedex-image'/>
@@ -87,6 +90,19 @@ const Pokedex = () => {
                     currentPage > 1 && 
                     <button className='page-button' onClick={previousPage}>Previous</button> 
                 }
+
+                {currentPage}/{numberOfPages}
+                
+                {
+                    pagesNumber.map(page => (
+                        <button 
+                            onClick={() => setCurrentList((page - 1) * 15)}
+                            key={page}
+                        >{page}
+                        </button>
+                    ))
+                }
+
                 { 
                     currentPage < numberOfPages && 
                     <button className='page-button' onClick={nextPage}>Next</button> 
