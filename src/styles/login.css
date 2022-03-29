@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('../images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: Early GameBoy;
+    src: url('../images/Early_GameBoy.ttf');
+}
+
+.gameboy-container {
+    height: 100vh;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.hero {
+    background-image: url('../images/gameboy.png');
+    background-position: 50% 26%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+}
+
+.hero-container {
+    position: absolute;
+    width: 275px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    left: 124px;
+    top: 115px;
+}
+
+.welcome-message {
+    font-family: Early GameBoy;
+    font-size: 22px;
+    margin-bottom: 25px;
+    opacity: 0.65;
+    text-align: center;
+    width: 275px;
+}
+
+.user-input {
+    background: rgb(126,131,131);
+    background: linear-gradient(90deg, rgba(126,131,131,1) 0%, rgba(188,188,194,1) 100%);
+    border-radius: 10px;
+    font-family: Early GameBoy;
+    font-size: 26px;
+    height: 38px;
+    width: 263px;
+}
+
+.continue-button {
+    background-color: rgb(173, 255, 47);
+    border: solid;
+    border-radius: 50%;
+    font-weight: 900;
+    height: 65px;
+    left: 278px;
+    position: relative;
+    top: 204px;
+    width: 65px;
+}
+
+.cancel-button {
+    background-color: rgb(250, 8, 8);
+    border: solid;
+    border-radius: 50%;
+    font-weight: 900;
+    height: 65px;
+    left: 185px;
+    position: relative;
+    top: 170px;
+    width: 65px;
+}

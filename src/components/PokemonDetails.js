@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import AboutPokemon from './AboutPokemon';
+import Moves from './Moves';
+import PokemonStats from './PokemonStats';
 
 const PokemonDetails = () => {
 
@@ -17,6 +20,9 @@ const PokemonDetails = () => {
     return (
         <div>
             <img src={pokemon.sprites?.other.dream_world.front_default} />
+            <AboutPokemon pokemon={pokemon}/>
+            <Moves pokemon={pokemon}/>
+            <PokemonStats pokemon={pokemon}/>
         </div>
     );
 };

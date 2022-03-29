@@ -6,6 +6,7 @@ import PokemonCard from './PokemonCard';
 import pokemon from '../images/pokemon.png'
 import pokeball from '../images/pokeball.png'
 import '../styles/pokedex.css';
+import { type } from '@testing-library/user-event/dist/type';
 
 const Pokedex = () => {
 
@@ -62,51 +63,31 @@ const Pokedex = () => {
 
     return (
         <div>
-            <img src={pokemon} className='pokedex-image'/>
-            <p className='intro-message'>Welcome <strong>{userName}</strong>, let's get the stats of your favorite Pokemon</p>
-            <div className="search-container">
-                <div className='select-container'>
-                    <select onChange={handleType}>
-                        {
-                            types.map(type => (
-                                <option key={type.name} value={type.url}>{type.name}</option>
-                            ))
-                        }
-                    </select>
+            <div className="pokedex-top">
+                <img src={pokemon} className='pokedex-image'/>
+                <p className='intro-message'>Welcome <strong>{userName}</strong>, let's get the stats of your favorite Pokemon</p>
+                <div className="search-container">
+                    <div className='select-container'>
+                        <select onChange={handleType}>
+                            <option>Todos los pokemon</option>
+                            {
+                                types.map(type => (
+                                    <option key={type.name} value={type.url}>{type.name}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <form onSubmit={submit} className='input-container'>
+                        <label htmlFor="search">Search</label>
+                        <input 
+                            type="text"
+                            id='search' 
+                            onChange={e => setPokemonName(e.target.value)}
+                            value={pokemonName}
+                        />
+                        <button><img src={pokeball} className='pokeball-image'/></button>
+                    </form>
                 </div>
-                <form onSubmit={submit} className='input-container'>
-                    <label htmlFor="search">Search</label>
-                    <input 
-                        type="text"
-                        id='search' 
-                        onChange={e => setPokemonName(e.target.value)}
-                        value={pokemonName}
-                    />
-                    <button><img src={pokeball} className='pokeball-image'/></button>
-                </form>
-            </div>
-            <div className='button-container'>
-                {   
-                    currentPage > 1 && 
-                    <button className='page-button' onClick={previousPage}>Previous</button> 
-                }
-
-                {currentPage}/{numberOfPages}
-                
-                {
-                    pagesNumber.map(page => (
-                        <button 
-                            onClick={() => setCurrentList((page - 1) * 15)}
-                            key={page}
-                        >{page}
-                        </button>
-                    ))
-                }
-
-                { 
-                    currentPage < numberOfPages && 
-                    <button className='page-button' onClick={nextPage}>Next</button> 
-                }             
             </div>
             <ul className='pokemon-list'>
                 {
@@ -118,6 +99,37 @@ const Pokedex = () => {
                     ))
                 }
             </ul>
+            <div className="pages-buttons">
+                <div className='button-container'>
+                    {   
+                        currentPage > 1 && 
+                        <button className='page-button' onClick={previousPage}>Previous</button> 
+                    }
+
+                    <h2>Página {currentPage}/{numberOfPages}</h2>
+                    
+                    { 
+                        currentPage < numberOfPages && 
+                        <button className='page-button' onClick={nextPage}>Next</button> 
+                    }          
+                </div>
+                <h2 className='pages-title'>Búsqueda por página</h2>
+                <div className="pagination-container">
+                    {
+                        pagesNumber.map(page => (
+                            <button 
+                                className='button-list'
+                                onClick={() => {
+                                    setCurrentList((page - 1) * 15);
+                                    setCurrentPage(page);
+                                }}
+                                key={page}
+                            >{page}
+                            </button>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     );
 };

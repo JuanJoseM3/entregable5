@@ -5,6 +5,7 @@
 }
 
 .pokemon-list {
+    background-color: #f1f1e9;
     display: flex;
     flex-wrap: wrap;
 }
@@ -19,10 +20,9 @@
 }
 
 .pokemon-card {
-    background-color: #000000;
     border-radius: 10px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    color: #ffffff;
+    color: #f7f0f0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -33,21 +33,21 @@
 }
 
 .pokemon-card h2 {
-    background-color: #000000;
+    background-color: transparent;
     font-size: 34px;
     margin-bottom: 20px;
     text-transform: capitalize;
 }
 
 .left {    
-    background-color: #000000;
+    background-color: transparent;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
 .left ul {
-    background-color: #000000;
+    background-color: transparent;
     font-size: 18px;
     list-style: none;
     text-align: left;
@@ -55,7 +55,7 @@
 
 .left ul li {
     align-items: center;
-    background-color: gray;
+    background-color: rgb(192, 175, 175);
     border-radius: 13px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -65,13 +65,11 @@
 }
 
 .left ul li strong {
-    background-color: gray;
+    background-color: rgb(192, 175, 175);
 }
 
 .pokemon-image {
-    background-color: #000000;
+    background-color: transparent;
     height: 120px;
     margin-top: 15px;
 }
-
-/* grass: '#86CFB3' */
