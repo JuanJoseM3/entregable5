@@ -2,17 +2,28 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/pokemoncard.css';
+import { useDispatch } from 'react-redux';
 
 const PokemonCard = ({ pokemonURL }) => {
 
     const [ pokemon, setPokemon ] = useState({});
-    const [ background, setBackground ] = useState('#b89c7b')
+    const [ background, setBackground ] = useState('')
+    const [types, setTypes ] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         axios.get(pokemonURL)
             .then(res => {
                 setPokemon(res.data)
                 
+                const filteredTypes = []
+                for( let i = 0; i < res.data.types.length; i+=2) {
+                    res.data.types.map(type => (
+                        filteredTypes.push(type.type.name)
+                    ))
+                }
+                setTypes(filteredTypes);
+
                 if(res.data.types[0].type.name === 'normal') setBackground('#b89c7b')
                 else if(res.data.types[0].type.name === 'fighting') setBackground('#ec1919')
                 else if(res.data.types[0].type.name === 'flying') setBackground('#b378db')
@@ -24,7 +35,7 @@ const PokemonCard = ({ pokemonURL }) => {
                 else if(res.data.types[0].type.name === 'steel') setBackground('#7e7272')
                 else if(res.data.types[0].type.name === 'fire') setBackground('#e9640c')
                 else if(res.data.types[0].type.name === 'water') setBackground('#457591')
-                else if(res.data.types[0].type.name === 'grass') setBackground('#41e73b')
+                else if(res.data.types[0].type.name === 'grass') setBackground('#49e785')
                 else if(res.data.types[0].type.name === 'electric') setBackground('#f3de1d')
                 else if(res.data.types[0].type.name === 'psychic') setBackground('#ec80da')
                 else if(res.data.types[0].type.name === 'ice') setBackground('#79cac3')
@@ -39,20 +50,31 @@ const PokemonCard = ({ pokemonURL }) => {
     const styles = {
         background
     }
-
+    
+    console.log(pokemon)
     return (
         <li className='column'>
-            <Link className='pokemon-card' to={`/pokemons/${pokemon.id}`} style={styles}>
+            <Link 
+                className='pokemon-card' 
+                to={`/pokemons/${pokemon.id}`} 
+                style={styles} 
+                onClick={() => dispatch({ type: "SET_BACKGROUND", payload: {background, types}})}
+            >
+                <div className='pokemon-index'>
+                    {pokemon.id >= 100 ? pokemon.id : (pokemon.id >= 10 ? ('0'+pokemon.id) : ('00' + pokemon.id))}
+                </div>
+                <img src={pokemon.sprites?.other["official-artwork"].front_default} className='pokemon-image'/>
                 <h2>{pokemon.name}</h2>
-                <div className="left">
-                    <ul>
-                        <li><strong>Type: </strong>{pokemon.types?.[0].type.name}</li>
-                        <li><strong>Attack: </strong>{pokemon.stats?.[1].base_stat}</li>
-                        <li><strong>Defense: </strong>{pokemon.stats?.[2].base_stat}</li>
-                        <li><strong>Speed: </strong>{pokemon.stats?.[5].base_stat}</li>
-                        <li><strong>HP: </strong>{pokemon.stats?.[0].base_stat}</li>
-                    </ul>
-                    <img src={pokemon.sprites?.other["official-artwork"].front_default} className='pokemon-image'/>
+                <div className="types-container">
+                    <p className='types-info'>
+                        {types.length <= 1 ? 'Type:' : 'Types:'}<span>
+                        {
+                            types.map((type, i) => {
+                                return (i < types.length - 1) ? (type + ', ') : (type)
+                            })
+                        }
+                        </span>
+                    </p>
                 </div>
             </Link>
         </li>

@@ -1,11 +1,62 @@
 * {
     box-sizing: border-box;
+    font-family: Early_GameBoy;
     margin: 0;
     padding: 0;
 }
 
+.content-input input,
+.content-select select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.content-select select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.content-select select::-ms-expand {
+    display: none;
+}
+
+.content-select {
+	width: 420px;
+	position: relative;
+}
+ 
+.content-select select {
+    background: #414b46;
+    border-bottom:2px solid rgba(0,0,0,0.2);
+    border-radius: 12px;
+    color: #999;
+    cursor: pointer;
+    font-size: 18px;
+    height: 40px;
+    padding: 7px 10px;
+    position: relative;
+    overflow-y: visible;
+    text-transform: capitalize;
+    transition: all 0.25s ease;
+	width: 100%; 
+}
+
+.option1 {
+    background-color: #f1f1e9;
+}
+
+@font-face {
+    font-family: Early_GameBoy;
+    src: url('../images/Early_GameBoy.ttf');
+}
+
 .pokedex-top {
     background-color: #f1f1e9;
+    background-image: url('../images/types.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .pokedex-image {
@@ -28,6 +79,8 @@
     flex-direction: row;
     height: 30px;
     justify-content: space-evenly;
+    padding-bottom: 50px;
+    padding-top: 80px;
     margin-top: 20px;
 }
 
@@ -68,13 +121,6 @@
     cursor: pointer;
 }
 
-.select-container select {
-    font-size: 14px;
-    height: 30px;
-    padding: 5px;
-    width: 250px;
-}
-
 .input-container {
     align-items: center;
     display: flex;
@@ -86,7 +132,8 @@
 }
 
 .input-container input {
-    height: 28px;
+    font-size: 22px;
+    height: 35px;
 }
 
 .input-container button {
@@ -102,7 +149,14 @@
 }
 
 .pokeball-image {
-    height: 24px;
+    height: 35px;
+    margin-left: -16px;
+    margin-top: -2px;
+}
+
+.pokeball-image:hover {
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .button-container {
@@ -111,7 +165,7 @@
     flex-direction: row;
     justify-content: space-around;
     margin: 20px auto;
-    width: 400px;
+    width: 600px;
 }
 
 .page-button {
@@ -124,7 +178,7 @@
     font-size: 20px;
     height: 60px;
     padding: 0 20px;
-    width: 120px
+    max-width: 200px
 }
 
 .page-button:hover {

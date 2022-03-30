@@ -20,24 +20,27 @@ const Login = () => {
     }
 
     return (
-        <div className="gameboy-container">
-            <div className='hero'>
-                <form className="hero-container" onSubmit={submit}>
-                    <h4 className='welcome-message'>Hello player, type your name to find your favorite pokemon</h4>
-                    <input 
-                        type="text"
-                        className='user-input' 
-                        onChange={e => setUserName(e.target.value)}
-                        value={userName}
-                        required
-                    />
-                    <button className='continue-button'>SUBMIT</button>
-                    <button 
-                        className='cancel-button' 
-                        type='button'
-                        onClick={() => setUserName('')}
-                    >CANCEL</button>
-                </form>
+        <div className="app">
+            <div className="gameboy-container">
+                <div className='hero'>
+                    <form className="hero-container" onSubmit={submit}>
+                        <h4 className='welcome-message'>Hello player, type your name to find your favorite pokemon</h4>
+                        <input 
+                            type="text"
+                            className='user-input' 
+                            onChange={e => setUserName(e.target.value)}
+                            value={userName}
+                            placeholder='Your name...'
+                            required
+                        />
+                        <button className='continue-button'>SUBMIT</button>
+                        <button 
+                            className='cancel-button' 
+                            type='button'
+                            onClick={() => setUserName('')}
+                        >CANCEL</button>
+                    </form>
+                </div>
             </div>
         </div>    
     );

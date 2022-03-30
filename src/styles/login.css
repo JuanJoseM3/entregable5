@@ -4,10 +4,20 @@
     padding: 0;
 }
 
+html {
+    font-size: 62.5%;
+    height: 100vh;
+}
+
 body {
+    font-size: 16px;
+}
+
+.app {
     background-image: url('../images/background.png');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 @font-face {
@@ -16,68 +26,76 @@ body {
 }
 
 .gameboy-container {
-    height: 100vh;
+    height: 90rem;
     margin: 0 auto;
-    width: 500px;
+    width: 50rem;
 }
 
 .hero {
     background-image: url('../images/gameboy.png');
     background-position: 50% 26%;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 90rem;
     position: relative;
 }
 
 .hero-container {
     position: absolute;
-    width: 275px;
-    height: 100%;
+    width: 27.5rem;
+    height: 50rem;
     display: flex;
     flex-direction: column;
-    left: 124px;
-    top: 115px;
+    left: 12.4rem;
+    top: 11.5rem;
 }
 
 .welcome-message {
     font-family: Early GameBoy;
-    font-size: 22px;
-    margin-bottom: 25px;
+    font-size: 2.2rem;
+    margin-bottom: 2.2rem;
     opacity: 0.65;
     text-align: center;
-    width: 275px;
+    width: 27.5rem;
 }
 
 .user-input {
     background: rgb(126,131,131);
     background: linear-gradient(90deg, rgba(126,131,131,1) 0%, rgba(188,188,194,1) 100%);
-    border-radius: 10px;
+    border-radius: 1rem;
     font-family: Early GameBoy;
-    font-size: 26px;
-    height: 38px;
-    width: 263px;
+    font-size: 2.6rem;
+    height: 3.8rem;
+    width: 26.3rem;
 }
 
 .continue-button {
     background-color: rgb(173, 255, 47);
     border: solid;
     border-radius: 50%;
+    font-size: 1rem;
     font-weight: 900;
-    height: 65px;
-    left: 278px;
+    height: 6.5rem;
+    left: 27.8rem;
     position: relative;
-    top: 204px;
-    width: 65px;
+    top: 20.4rem;
+    width: 6.5rem;
 }
 
 .cancel-button {
     background-color: rgb(250, 8, 8);
     border: solid;
     border-radius: 50%;
+    font-size: 1rem;
     font-weight: 900;
-    height: 65px;
-    left: 185px;
+    height: 6.5rem;
+    left: 18.5rem;
     position: relative;
-    top: 170px;
-    width: 65px;
+    top: 16.5rem;
+    width: 6.5rem;
+}
+
+.continue-button:hover, .cancel-button:hover {
+    cursor: pointer;
+    height: 6.7rem;
+    width: 6.7rem;
 }

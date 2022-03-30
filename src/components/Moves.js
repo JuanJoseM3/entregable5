@@ -10,15 +10,17 @@ const Moves = ({pokemon}) => {
     }
 
     return (
-        <div>
+        <div className='moves'>
             <h2>Movements</h2>
-            <ul>
-                {
-                    moves.slice(0,20).map(move => (
-                        <li key={move}>{move}</li>
-                    ))
-                }
-            </ul>
+            <div className="moves-container">
+                <ul className='left-column'>
+                    {
+                        moves.slice(0,20).map(move => (
+                            <li key={move}>{move}</li>
+                        ))
+                    }
+                </ul>
+            </div>
         </div>
     );
 };

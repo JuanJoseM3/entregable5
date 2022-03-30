@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const AboutPokemon = ({ pokemon }) => {
     
@@ -11,13 +11,17 @@ const AboutPokemon = ({ pokemon }) => {
     }
 
     return (
-        <div>
-            <ul>
-                <li><strong>Height </strong>{pokemon.height * 10} cm</li>
-                <li><strong>Weight </strong>{pokemon.weight / 10} kg</li>
+        <div className='about-container'>
+            <h2>Basic info</h2>
+            <div className='info-container'>
+                <ul className='pokemon-description'>
+                    <li>Height {pokemon?.height * 10} cm</li>
+                    <li>Weight {pokemon?.weight / 10} kg</li>
+                </ul>
+                
                 <li></li>
                 <li><strong>Abilities </strong>{pokemonAbilities.map(ability => <p key={ability}>{ability}</p>)}</li>
-            </ul>
+            </div>
         </div>
     );
 };

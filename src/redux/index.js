@@ -1,5 +1,7 @@
 const INITIAL_STATE = {
-    userName: ""
+    userName: "",
+    cardColor:"",
+    types:[]
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -8,6 +10,13 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 userName: action.payload
+            }
+
+        case "SET_BACKGROUND":
+            return {
+                ...state,
+                cardColor: action.payload.background,
+                types: action.payload.types
             }
             
         default:

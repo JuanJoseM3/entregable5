@@ -6,7 +6,6 @@ import PokemonCard from './PokemonCard';
 import pokemon from '../images/pokemon.png'
 import pokeball from '../images/pokeball.png'
 import '../styles/pokedex.css';
-import { type } from '@testing-library/user-event/dist/type';
 
 const Pokedex = () => {
 
@@ -17,7 +16,7 @@ const Pokedex = () => {
     const [ types, setTypes ] = useState([]);
     const [ pokemonName, setPokemonName ] = useState("");
 
-    const numberOfPages = Math.ceil(pokemons.length / 15);
+    const numberOfPages = Math.ceil(pokemons.length / 16);
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ currentList, setCurrentList ] = useState(0);
 
@@ -28,18 +27,18 @@ const Pokedex = () => {
 
     const nextPage = () => {
         if( currentPage <= numberOfPages )
-            setCurrentList(currentList + 15);
+            setCurrentList(currentList + 16);
             setCurrentPage( currentPage + 1);
     }
 
     const previousPage = () => {
         if( currentList > 1 ) 
-            setCurrentList( currentList - 15);
+            setCurrentList( currentList - 16);
             setCurrentPage( currentPage - 1);
     }
 
     const pokemonsPageResults = () => {
-        return pokemons?.slice(currentList, currentList + 15);
+        return pokemons?.slice(currentList, currentList + 16);
     }
 
     useEffect(() => {
@@ -67,15 +66,16 @@ const Pokedex = () => {
                 <img src={pokemon} className='pokedex-image'/>
                 <p className='intro-message'>Welcome <strong>{userName}</strong>, let's get the stats of your favorite Pokemon</p>
                 <div className="search-container">
-                    <div className='select-container'>
+                    <div className='content-select'>
                         <select onChange={handleType}>
-                            <option>Todos los pokemon</option>
+                            <option className='option1'>Buscar pokemon por tipo</option>
                             {
                                 types.map(type => (
                                     <option key={type.name} value={type.url}>{type.name}</option>
                                 ))
                             }
                         </select>
+                        <i></i>
                     </div>
                     <form onSubmit={submit} className='input-container'>
                         <label htmlFor="search">Search</label>
@@ -106,21 +106,21 @@ const Pokedex = () => {
                         <button className='page-button' onClick={previousPage}>Previous</button> 
                     }
 
-                    <h2>Página {currentPage}/{numberOfPages}</h2>
+                    <h2>Pagina {currentPage}/{numberOfPages}</h2>
                     
                     { 
                         currentPage < numberOfPages && 
                         <button className='page-button' onClick={nextPage}>Next</button> 
                     }          
                 </div>
-                <h2 className='pages-title'>Búsqueda por página</h2>
+                <h2 className='pages-title'>Busqueda por pagina</h2>
                 <div className="pagination-container">
                     {
                         pagesNumber.map(page => (
                             <button 
                                 className='button-list'
                                 onClick={() => {
-                                    setCurrentList((page - 1) * 15);
+                                    setCurrentList((page - 1) * 16);
                                     setCurrentPage(page);
                                 }}
                                 key={page}
