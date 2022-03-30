@@ -26,7 +26,7 @@ body {
 }
 
 .gameboy-container {
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
     width: 50rem;
 }
@@ -35,7 +35,7 @@ body {
     background-image: url('../images/gameboy.png');
     background-position: 50% 26%;
     background-repeat: no-repeat;
-    height: 98vh;
+    height: 100%;
     position: relative;
 }
 
@@ -76,8 +76,8 @@ body {
     font-weight: 900;
     height: 6.5rem;
     left: 27.8rem;
-    position: relative;
-    top: 20.4rem;
+    position: absolute;
+    top: 44vh;
     width: 6.5rem;
 }
 
@@ -89,8 +89,8 @@ body {
     font-weight: 900;
     height: 6.5rem;
     left: 18.5rem;
-    position: relative;
-    top: 16.5rem;
+    position: absolute;
+    top: 47.5vh;
     width: 6.5rem;
 }
 
