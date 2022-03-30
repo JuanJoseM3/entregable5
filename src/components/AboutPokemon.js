@@ -5,7 +5,7 @@ const AboutPokemon = ({ pokemon }) => {
     const pokemonAbilities = [];
 
     for( let i = 0; i < pokemon?.abilities?.length - 1; i++) {
-        pokemon.abilities.map(ability => (
+        pokemon?.abilities.map(ability => (
             pokemonAbilities.push(ability.ability.name)
         ))
     }
@@ -15,12 +15,11 @@ const AboutPokemon = ({ pokemon }) => {
             <h2>Basic info</h2>
             <div className='info-container'>
                 <ul className='pokemon-description'>
+                    <p>Body Index</p>
                     <li>Height {pokemon?.height * 10} cm</li>
                     <li>Weight {pokemon?.weight / 10} kg</li>
                 </ul>
-                
-                <li></li>
-                <li><strong>Abilities </strong>{pokemonAbilities.map(ability => <p key={ability}>{ability}</p>)}</li>
+                <ul className='pokemon-abilities'><p>Abilities </p>{pokemonAbilities.map(ability => <li key={ability}>{ability}</li>)}</ul>
             </div>
         </div>
     );
