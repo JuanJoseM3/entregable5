@@ -26,7 +26,7 @@ body {
 }
 
 .gameboy-container {
-    height: 90rem;
+    height: 100vh;
     margin: 0 auto;
     width: 50rem;
 }
@@ -35,14 +35,14 @@ body {
     background-image: url('../images/gameboy.png');
     background-position: 50% 26%;
     background-repeat: no-repeat;
-    height: 90rem;
+    height: 98vh;
     position: relative;
 }
 
 .hero-container {
     position: absolute;
     width: 27.5rem;
-    height: 50rem;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     left: 12.4rem;
