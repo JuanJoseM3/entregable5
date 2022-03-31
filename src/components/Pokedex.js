@@ -15,8 +15,9 @@ const Pokedex = () => {
     const [ pokemons, setPokemons ] = useState([]);
     const [ types, setTypes ] = useState([]);
     const [ pokemonName, setPokemonName ] = useState("");
+    const [ displayedPokemons, setDisplayedPokemons ] = useState(8);
 
-    const numberOfPages = Math.ceil(pokemons.length / 16);
+    const numberOfPages = Math.ceil(pokemons.length / displayedPokemons);
     const [ currentPage, setCurrentPage ] = useState(1);
     const [ currentList, setCurrentList ] = useState(0);
 
@@ -27,18 +28,18 @@ const Pokedex = () => {
 
     const nextPage = () => {
         if( currentPage <= numberOfPages )
-            setCurrentList(currentList + 16);
+            setCurrentList(currentList + displayedPokemons);
             setCurrentPage( currentPage + 1);
     }
 
     const previousPage = () => {
         if( currentList > 1 ) 
-            setCurrentList( currentList - 16);
+            setCurrentList( currentList - displayedPokemons);
             setCurrentPage( currentPage - 1);
     }
 
     const pokemonsPageResults = () => {
-        return pokemons?.slice(currentList, currentList + 16);
+        return pokemons?.slice(currentList, currentList + displayedPokemons);
     }
 
     useEffect(() => {
@@ -57,7 +58,14 @@ const Pokedex = () => {
 
     const handleType = e => {
         axios.get(e.target.value)
-            .then(res => setPokemons(res.data.pokemon))
+            .then(res => {
+                setPokemons(res.data.pokemon)
+                setCurrentList(currentList + displayedPokemons)
+            })
+    }
+
+    const handleDisplay = e => {
+        setDisplayedPokemons(e.target.value)
     }
 
     return (
@@ -66,17 +74,30 @@ const Pokedex = () => {
                 <img src={pokemon} className='pokedex-image'/>
                 <p className='intro-message'>Welcome <strong>{userName}</strong>, let's get the stats of your favorite Pokemon</p>
                 <div className="search-container">
-                    <div className='content-select'>
-                        <select onChange={handleType}>
-                            <option className='option1'>Buscar pokemon por tipo</option>
-                            {
-                                types.map(type => (
-                                    <option key={type.name} value={type.url}>{type.name}</option>
-                                ))
-                            }
-                        </select>
-                        <i></i>
+                    <div className="selects-container">
+                        <div className='content-select'>
+                            <select onChange={handleType}>
+                                <option>Search by type</option>
+                                {
+                                    types.map(type => (
+                                        <option key={type.name} value={type.url}>{type.name}</option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+
+                        <div className='content-select'>
+                            <select onChange={handleDisplay}>
+                                <option>Results per page</option>
+                                <option value={4}>4</option>
+                                <option value={8}>8</option>
+                                <option value={12}>12</option>
+                                <option value={16}>16</option>
+                                <option value={20}>20</option>
+                            </select>
+                        </div>
                     </div>
+
                     <form onSubmit={submit} className='input-container'>
                         <label htmlFor="search">Search</label>
                         <input 
@@ -89,6 +110,7 @@ const Pokedex = () => {
                     </form>
                 </div>
             </div>
+            <h3 className='showing'>Showing {displayedPokemons} results per page</h3>
             <ul className='pokemon-list'>
                 {
                     pokemonsPageResults().map(pokemon => (
@@ -106,21 +128,21 @@ const Pokedex = () => {
                         <button className='page-button' onClick={previousPage}>Previous</button> 
                     }
 
-                    <h2>Pagina {currentPage}/{numberOfPages}</h2>
+                    <h2>Page {currentPage}// {numberOfPages}</h2>
                     
                     { 
                         currentPage < numberOfPages && 
                         <button className='page-button' onClick={nextPage}>Next</button> 
                     }          
                 </div>
-                <h2 className='pages-title'>Busqueda por pagina</h2>
+                <h2 className='pages-title'>Search by page number</h2>
                 <div className="pagination-container">
                     {
                         pagesNumber.map(page => (
                             <button 
                                 className='button-list'
                                 onClick={() => {
-                                    setCurrentList((page - 1) * 16);
+                                    setCurrentList((page - 1) * displayedPokemons);
                                     setCurrentPage(page);
                                 }}
                                 key={page}

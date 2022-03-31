@@ -51,7 +51,6 @@ const PokemonCard = ({ pokemonURL }) => {
         background
     }
     
-    console.log(pokemon)
     return (
         <li className='column'>
             <Link 

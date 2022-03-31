@@ -22,7 +22,7 @@ const PokemonDetails = () => {
     useEffect(() => {
         switch (type) {
           case 'about':
-            setComponent(<AboutPokemon pokemon={pokemon}/>);
+            setComponent(<AboutPokemon pokemon={pokemon} height={pokemon?.height} weight={pokemon?.weight}/>);
             break;
           
           case 'stats':
@@ -40,13 +40,9 @@ const PokemonDetails = () => {
             .then(res => setPokemon(res.data))
     }, [ id ]);
 
-    console.log(pokemon);
-
     const styles = {
         background
     }
-
-    console.log(types)
 
     return (
         <div className="details-container">

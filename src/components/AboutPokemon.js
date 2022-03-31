@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AboutPokemon = ({ pokemon }) => {
+const AboutPokemon = ({ pokemon, height, weight }) => {
     
     const pokemonAbilities = [];
 
@@ -16,10 +16,10 @@ const AboutPokemon = ({ pokemon }) => {
             <div className='info-container'>
                 <ul className='pokemon-description'>
                     <p>Body Index</p>
-                    <li>Height {pokemon?.height * 10} cm</li>
-                    <li>Weight {pokemon?.weight / 10} kg</li>
+                    <li>Height {height * 10} cm</li>
+                    <li>Weight {weight / 10} kg</li>
                 </ul>
-                <ul className='pokemon-abilities'><p>Abilities </p>{pokemonAbilities.map(ability => <li key={ability}>{ability}</li>)}</ul>
+                <ul className='pokemon-abilities'><p>Abilities </p>{pokemonAbilities.slice(0,2).map(ability => <li key={ability}>{ability}</li>)}</ul>
             </div>
         </div>
     );
