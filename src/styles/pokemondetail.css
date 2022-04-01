@@ -52,18 +52,51 @@ li {
     cursor: pointer;
 }
 
+.section-container {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
+}
+
+.ash-container, .pikachu-container {
+    height: 86vh;
+    padding: 60px 20px;
+    width: 100%;
+}
+
+.ash-image {
+    background-image: url('../images/ash.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    height: 100%;
+    margin: 0 auto;
+}
+
 .main-info {
     border: 5px solid rgb(65, 61, 61);
     border-radius: 10px;
     height: 50vh;
-    margin: 0 auto;
     margin-top: -5px;
     padding: 30px;
-    width: 600px;
+    position: relative;
+    width: 100%;
 }
 
 .main-info h2 {
     font-size: 30px;
+}
+
+.pikachu-container {
+    padding: 120px 50px;
+}
+
+.pikachu-image {
+    background-image: url('../images/pikachu.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    height: 100%;
+    margin: 0 auto;
 }
 
 .types-container {
@@ -73,7 +106,7 @@ li {
     flex-direction: row;
     justify-content: space-around;
     margin-top: 40px;
-    width: 80%;
+    width: 100%;
 }
 
 .type-item {
@@ -86,23 +119,25 @@ li {
 
 .pokemon-picture {
     display: flex;
-    height: 250px;
+    height: 280px;
     margin: 0 auto;
     position: relative;
-    top: 70px;
+    top: 30px;
+    z-index: 10;
 }
 
 .button-section {
+    align-items: center;
     background-color: rgb(209, 195, 195);
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-left: -35px;
-    margin-top: 5px;
+    display: block;
+    left: -5px;
     padding: 40px 30px 10px;
-    width: 600px;
+    position: absolute;
+    top: 44vh;
+    width: 101.3%;
+    z-index: 1;
 }
 
 .info-button {
@@ -110,11 +145,11 @@ li {
     border: none;
     font-size: 18px;
     padding-top: 40px;
-    width: 28%;
+    width: 25%;
 }
 
 .middle-button {
-    width: 44%;
+    width: 50%;
 }
 
 .info-button:hover {
@@ -128,9 +163,11 @@ li {
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     height: 28vh;
-    margin-left: -34px;
+    left: -5px;
     padding: 0 60px 20px;
-    width: 600px;
+    position: absolute;
+    top: 56vh;
+    width: 101.3%;
 }
 
 .about-container h2, .pokemon-stats-container h2, .moves h2 {
@@ -144,7 +181,7 @@ li {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .pokemon-description, .pokemon-abilities {
@@ -169,7 +206,6 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    position: relative;
 }
 
 .pokemon-stats-container .progress {
@@ -210,4 +246,3 @@ li {
     display: flex;
     flex-direction: column;
 }
-

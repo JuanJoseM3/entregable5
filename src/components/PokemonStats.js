@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PokemonStats = ({pokemon}) => {
+const PokemonStats = ({ pokemon }) => {
     return (
         <div className='pokemon-stats-container'>
             <h2>Pokemon Stats</h2>

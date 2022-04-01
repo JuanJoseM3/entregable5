@@ -15,7 +15,7 @@ const Pokedex = () => {
     const [ pokemons, setPokemons ] = useState([]);
     const [ types, setTypes ] = useState([]);
     const [ pokemonName, setPokemonName ] = useState("");
-    const [ displayedPokemons, setDisplayedPokemons ] = useState(8);
+    const [ displayedPokemons, setDisplayedPokemons ] = useState(20);
 
     const numberOfPages = Math.ceil(pokemons.length / displayedPokemons);
     const [ currentPage, setCurrentPage ] = useState(1);
@@ -57,15 +57,21 @@ const Pokedex = () => {
     }
 
     const handleType = e => {
-        axios.get(e.target.value)
-            .then(res => {
-                setPokemons(res.data.pokemon)
-                setCurrentList(currentList + displayedPokemons)
+        if(e.target.value === 'getAllPokemon') {
+            axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1125')
+                .then(res => setPokemons(res.data.results))
+        } else {
+            axios.get(e.target.value)
+                .then(res => {
+                    setPokemons(res.data.pokemon)
             })
+        }  
     }
 
     const handleDisplay = e => {
-        setDisplayedPokemons(e.target.value)
+        setDisplayedPokemons(parseInt(e.target.value));
+        setCurrentList(0);
+        setCurrentPage(1);
     }
 
     return (
@@ -78,6 +84,7 @@ const Pokedex = () => {
                         <div className='content-select'>
                             <select onChange={handleType}>
                                 <option>Search by type</option>
+                                <option value='getAllPokemon'>All Pokemon</option>
                                 {
                                     types.map(type => (
                                         <option key={type.name} value={type.url}>{type.name}</option>

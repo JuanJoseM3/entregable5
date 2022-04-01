@@ -2,14 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/pokemoncard.css';
-import { useDispatch } from 'react-redux';
 
 const PokemonCard = ({ pokemonURL }) => {
 
     const [ pokemon, setPokemon ] = useState({});
     const [ background, setBackground ] = useState('')
     const [types, setTypes ] = useState([]);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         axios.get(pokemonURL)
@@ -53,11 +51,10 @@ const PokemonCard = ({ pokemonURL }) => {
     
     return (
         <li className='column'>
-            <Link 
+            <Link
                 className='pokemon-card' 
                 to={`/pokemons/${pokemon.id}`} 
                 style={styles} 
-                onClick={() => dispatch({ type: "SET_BACKGROUND", payload: {background, types}})}
             >
                 <div className='pokemon-index'>
                     {pokemon.id >= 100 ? pokemon.id : (pokemon.id >= 10 ? ('0'+pokemon.id) : ('00' + pokemon.id))}

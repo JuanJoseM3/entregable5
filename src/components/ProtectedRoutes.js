@@ -5,7 +5,7 @@ const ProtectedRoutes = () => {
 
     const userName = useSelector(state => state.userName);
 
-    if(true){
+    if(userName){
         return <Outlet />
     } else { 
         return <Navigate to='/' />
