@@ -43,11 +43,6 @@
 	width: 100%; 
 }
 
-.column {
-    padding: 25px;
-    width: 25%;
-}
-
 @font-face {
     font-family: Early_GameBoy;
     src: url('../images/Early_GameBoy.ttf');
@@ -74,19 +69,22 @@
     text-align: center;
 }
 
+
+
 .search-container {
     background-color: #f1f1e9;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     list-style: none;
     padding: 30px 0;
 }
 
 .selects-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    height: 20vh;
     justify-content: space-around;
-    width: 50%;
+    width: 100%;
 }
 
 .pages-buttons {
@@ -95,7 +93,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     margin: 0 auto;
-    padding: 20px 130px;
+    padding: 20px 40px;
     width: 100%;
 }
 
@@ -132,16 +130,16 @@
     flex-direction: row;
     font-size: 20px;
     height: 30px;
-    justify-content: space-evenly;
-    padding: 0 25px;
+    justify-content: space-around;
+    padding: 0 22px;
     position: relative;
-    width: 50%;
+    width: 100%;
 }
 
 .input-container input {
     font-size: 22px;
     height: 35px;
-    width: 75%;
+    width: 80%;
 }
 
 .input-container button {
@@ -154,12 +152,13 @@
     background-color: rgb(226, 223, 223);
     border-radius: 8px;
     cursor: pointer;
+    opacity: 0.9;
 }
 
 .pokeball-image {
     height: 35px;
-    margin-left: -44px;
-    margin-top: -17px;
+    margin-left: -30px;
+    margin-top: -18px;
     position: absolute;
 }
 
@@ -174,7 +173,8 @@
     flex-direction: row;
     justify-content: space-around;
     margin: 20px auto;
-    width: 600px;
+    padding: 0;
+    width: 85%;
 }
 
 .showing {
@@ -201,4 +201,42 @@
     font-size: 22px;
     opacity: 0.85;
     transition: 0.1s;
+}
+
+@media (min-width: 1440px) {
+    .search-container {
+        background-color: #f1f1e9;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 30px 0;
+    }
+
+    .selects-container {
+        display: flex;
+        flex-direction: row;
+        height: 6vh;
+        justify-content: space-around;
+        width: 50%;
+    }
+
+    .input-container {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        font-size: 20px;
+        height: 30px;
+        justify-content: space-evenly;
+        padding: 0 25px;
+        position: relative;
+        width: 50%;
+    }
+
+    .input-container input {
+        font-size: 22px;
+        height: 35px;
+        width: 75%;
+    }
+    
 }
